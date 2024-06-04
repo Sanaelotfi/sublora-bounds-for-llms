@@ -1,0 +1,43 @@
+login:
+  wandb_log: True 
+  wandb_project: SubLoRA_Pretrain
+  wandb_run_name: training 
+  out_dir: TOADD
+data:
+  batch_size: 8
+  block_size: 1024
+  perturb_word_order_window_size: 0
+  dataset_dir: TOADD
+training:
+  gradient_accumulation_steps: 40
+  max_iters: 600000
+  eval_interval: 10
+  eval_iters: 10 
+  log_interval: 10
+  always_save_checkpoint: False 
+optimizer: 
+  beta1: 0.9 
+  beta2: 0.999
+  learning_rate: 5e-3
+  weight_decay: 1e-2 
+  correct_bias: True 
+  adam_epislon: 1e-06
+  no_decay_bias: False
+learning_rate: 
+  lr_decay_iters: 600000
+model:
+  n_layer: 12
+  n_head: 12
+  n_embd: 768
+  apply_rope: False
+  use_mistral_sliding_window: False
+  init_from: scratch
+sublora:
+  use_lora: True
+  lora_alpha: 32
+  lora_dropout: 0.1
+  attention_linear_use_lora: True
+  attention_linear_lora_r: 4
+  linear_head_lora_r: 4
+  linear_head_enable_lora: True
+  intrinsic_dim: 50000

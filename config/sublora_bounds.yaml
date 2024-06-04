@@ -1,0 +1,39 @@
+login:
+  wandb_log: True 
+  wandb_project: Sublora_Bounds
+  wandb_run_name: bounds 
+training:
+  eval_iters: 5
+data:
+  block_size: 1024
+  perturb_word_order_window_size: 0
+  dataset_dir: TOADD
+  openwebtext_train_eot_indices_file: TOADD
+  empirical_document_length_distribution_file: TOADD
+model:
+  n_layer: 12
+  n_head: 12
+  n_embd: 768
+  apply_rope: False
+  use_mistral_sliding_window: False
+  init_from: best_ckpt
+  best_checkpoint_path: TOADD
+sublora:
+  use_lora: True
+  lora_alpha: 32
+  lora_dropout: 0.1
+  attention_linear_use_lora: True
+  attention_linear_lora_r: 4
+  linear_head_lora_r: 4
+  linear_head_enable_lora: True
+  intrinsic_dim: 50000
+bounds:
+  use_kmeans: False
+  quant_lr: 5e-5
+  eval_batch_size: 6
+  max_quant_iters: 0
+  levels: 11 
+  bound_samples: 10000
+  bound_type: document_level
+  sliding_window_size: 100
+  misc_extra_bits: 7
